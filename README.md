@@ -1,2 +1,93 @@
 # Teste
 Gerador de senhas 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gerador de Senhas</title>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.container {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  width: 320px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.password-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input[type="number"], button, input[type="text"] {
+  margin: 5px 0;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 100%;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+input[type="text"] {
+  font-size: 16px;
+  text-align: center;
+}
+  </style>
+  <script>
+    function generatePassword() {
+  const length = document.getElementById('length').value;
+  const charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+';
+  let password = '';
+
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * charset.length);
+    password += charset.charAt(randomIndex);
+  }
+
+  document.getElementById('password').value = password;
+}
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Gerador de Senhas</h1>
+    <div class="password-container">
+      <label for="length">Comprimento da Senha:</label>
+      <input type="number" id="length" min="6" max="20">
+      <button onclick="generatePassword()">Gerar Senha</button>
+      <input type="text" id="password" readonly>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
